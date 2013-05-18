@@ -1,0 +1,17 @@
+nconf = require "nconf"
+path = require "path"
+
+
+module.exports = (container, callback) ->
+  applicationDirectory = container.get "application directory"
+  logger = container.get "logger"
+
+  logger.info "loading plugin", "contrib-nconf"
+
+  nconf.file path.join applicationDirectory, "config.json"
+
+  for storeName, store of nconf.stores
+    for key, value of store.store
+      container.set key, value
+
+  callback()

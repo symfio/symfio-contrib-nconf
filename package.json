@@ -1,0 +1,38 @@
+{
+  "name": "symfio-contrib-nconf"
+, "version": "0.1.0"
+, "description": "Read configuration from config.json and save it into container."
+, "keywords": ["symfio-plugin", "symfio-contrib", "nconf"]
+, "homepage": "http://symf.io/plugins/contrib-nconf"
+, "bugs": {
+    "url": "https://github.com/symfio/symfio-contrib-nconf/issues"
+  , "email": "webmaster@rithis.com"
+  }
+, "author": {
+    "name": "Vyacheslav Slinko"
+  , "email": "vyacheslav.slinko@gmail.com"
+  }
+, "main": "lib/nconf"
+, "repository": {
+    "type": "git"
+  , "url": "git://github.com/symfio/symfio-contrib-nconf.git"
+  }
+, "scripts": {
+    "test": "grunt simplemocha"
+  }
+, "dependencies": {
+    "nconf": "~0.6"
+  }
+, "devDependencies": {
+    "symfio": "~1.0"
+  , "symfio-suite": "~1.0"
+  , "grunt": "~0.4"
+  , "grunt-simple-mocha": "~0.4"
+  , "grunt-coffeelint": "~0.0"
+  }
+, "engines": {
+    "node": "~0.8"
+  , "npm": "~1.2"
+  , "coffee-script": "~1.6"
+  }
+}
