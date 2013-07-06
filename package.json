@@ -1,6 +1,6 @@
 {
   "name": "symfio-contrib-nconf"
-, "version": "0.1.0"
+, "version": "2.0.0"
 , "description": "Read configuration from config.json and save it into container."
 , "keywords": ["symfio-plugin", "symfio-contrib", "nconf"]
 , "homepage": "http://symf.io/plugins/contrib-nconf"
