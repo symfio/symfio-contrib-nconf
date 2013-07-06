@@ -9,17 +9,17 @@ symfio = require "symfio"
 
 container = symfio "example", __dirname
 
-loader = container.get "loader"
-
-loader.use require "symfio-contrib-nconf"
-
-loader.use (container, callback) ->
-  console.log container.get "some setting from config.json"
-  callback()
-
-loader.load()
+container.inject require "symfio-contrib-nconf"
 ```
 
-## Required plugins
+## Configuration
 
-* [contrib-express](https://github.com/symfio/symfio-contrib-express)
+### `configurationFile`
+
+Default value is `config.json`.
+
+## Services
+
+### `nconf`
+
+Original `nconf` module.

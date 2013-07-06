@@ -18,21 +18,23 @@
   , "url": "git://github.com/symfio/symfio-contrib-nconf.git"
   }
 , "scripts": {
-    "test": "grunt simplemocha"
+    "test": "npm install && grunt"
   }
 , "dependencies": {
     "nconf": "~0.6"
   }
 , "devDependencies": {
-    "symfio": "~1.0"
-  , "symfio-suite": "~1.0"
+    "symfio": "~2.0"
+  , "chai": "~1.7"
+  , "chai-as-promised": "~3.3"
   , "grunt": "~0.4"
   , "grunt-simple-mocha": "~0.4"
   , "grunt-coffeelint": "~0.0"
   }
 , "engines": {
-    "node": "~0.8"
-  , "npm": "~1.2"
+    "node": ">=0.8"
+  , "npm": ">=1.2"
   , "coffee-script": "~1.6"
+  , "grunt-cli": "~0.1"
   }
 }
