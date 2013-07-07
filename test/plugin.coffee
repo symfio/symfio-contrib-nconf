@@ -3,27 +3,45 @@ path = require "path"
 
 
 describe "contrib-nconf()", ->
-  it = suite.plugin [
-    (container) ->
-      container.set "applicationDirectory", path.join __dirname, "support"
+  it = suite.plugin (container, containerStub) ->
+    require("..") containerStub
 
-    require ".."
-  ]
+    container.set "nconf", (sandbox) ->
+      nconf =
+        env: sandbox.spy()
+        argv: sandbox.spy()
+        file: sandbox.spy()
 
-  process.env.symfio_fromEnv = "env"
-  process.argv.push "--fromArgv"
-  process.argv.push "argv"
+      nconf.stores =
+        env: store: symfio_fromEnv: "env"
+        argv: store: fromArgv: "argv"
+        file: store: fromFile: "file"
 
-  after ->
-    delete process.env.symfio_fromEnv
-    process.argv.pop()
-    process.argv.pop()
+      nconf
 
-  it "should read configuration from process.env", (fromEnv) ->
-    fromEnv.should.equal "env"
+  describe "container.unless configurationFile", ->
+    it "should define", (containerStub) ->
+      factory = containerStub.unless.get "configurationFile"
+      factory("/").should.equal "/config.json"
 
-  it "should read configuration from process.argv", (fromArgv) ->
-    fromArgv.should.equal "argv"
+  it "should read configuration from process.env",
+    (containerStub, nconf, logger) ->
+      factory = containerStub.inject.get 0
+      factory containerStub, nconf, "config.json", logger
+      nconf.env.should.be.calledOnce
+      containerStub.set.should.be.calledWith "fromEnv", "env"
 
-  it "should read configuration from config.json", (fromFile) ->
-    fromFile.should.equal "file"
+  it "should read configuration from process.argv",
+    (containerStub, nconf, logger) ->
+      factory = containerStub.inject.get 0
+      factory containerStub, nconf, "config.json", logger
+      nconf.argv.should.be.calledOnce
+      containerStub.set.should.be.calledWith "fromArgv", "argv"
+
+  it "should read configuration from config.json",
+    (containerStub, nconf, logger) ->
+      factory = containerStub.inject.get 0
+      factory containerStub, nconf, "config.json", logger
+      nconf.file.should.be.calledOnce
+      nconf.file.should.be.calledWith "config.json"
+      containerStub.set.should.be.calledWith "fromFile", "file"

@@ -7,7 +7,7 @@ module.exports = (container) ->
     logger.debug "require module", name: "nconf"
     require "nconf"
 
-  container.inject (nconf, configurationFile, logger) ->
+  container.inject (container, nconf, configurationFile, logger) ->
     nconf.env()
     nconf.argv()
     nconf.file configurationFile
