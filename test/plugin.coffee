@@ -27,30 +27,34 @@ describe "contrib-nconf()", ->
       factory = unlessed "configurationFile"
       factory().should.eventually.equal "/config.json"
 
-  it "should read configuration from process.env",
-    ["injected", "suite/container"],
-    (injected, container) ->
-      factory = injected()
-      factory.dependencies.container = container
-      factory().then ->
-        factory.dependencies.nconf.env.should.be.calledOnce
-        container.set.should.be.calledWith "fromEnv", "env"
+  describe "container.set loadConfig", ->
+    it "should read configuration from process.env",
+      ["setted", "suite/container"],
+      (setted, container) ->
+        factory = setted "loadConfig"
+        factory.dependencies.container = container
+        factory().then (loadConfig) ->
+          loadConfig()
+          factory.dependencies.nconf.env.should.be.calledOnce
+          container.set.should.be.calledWith "fromEnv", "env"
 
-  it "should read configuration from process.argv",
-    ["injected", "suite/container"],
-    (injected, container) ->
-      factory = injected()
-      factory.dependencies.container = container
-      factory().then ->
-        factory.dependencies.nconf.argv.should.be.calledOnce
-        container.set.should.be.calledWith "fromArgv", "argv"
+    it "should read configuration from process.argv",
+      ["setted", "suite/container"],
+      (setted, container) ->
+        factory = setted "loadConfig"
+        factory.dependencies.container = container
+        factory().then (loadConfig) ->
+          loadConfig()
+          factory.dependencies.nconf.argv.should.be.calledOnce
+          container.set.should.be.calledWith "fromArgv", "argv"
 
-  it "should read configuration from config.json",
-    ["injected", "suite/container"],
-    (injected, container) ->
-      factory = injected()
-      factory.dependencies.container = container
-      factory().then ->
-        factory.dependencies.nconf.file.should.be.calledOnce
-        factory.dependencies.nconf.file.should.be.calledWith "/config.json"
-        container.set.should.be.calledWith "fromFile", "file"
+    it "should read configuration from config.json",
+      ["setted", "suite/container"],
+      (setted, container) ->
+        factory = setted "loadConfig"
+        factory.dependencies.container = container
+        factory().then (loadConfig) ->
+          loadConfig()
+          factory.dependencies.nconf.file.should.be.calledOnce
+          factory.dependencies.nconf.file.should.be.calledWith "/config.json"
+          container.set.should.be.calledWith "fromFile", "file"
