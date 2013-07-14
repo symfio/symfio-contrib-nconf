@@ -2,6 +2,8 @@
 
 > Read configuration from config.json and save it into container.
 
+[![Build Status](https://travis-ci.org/symfio/symfio-contrib-nconf.png?branch=master)](https://travis-ci.org/symfio/symfio-contrib-nconf) [![Dependency Status](https://gemnasium.com/symfio/symfio-contrib-nconf.png)](https://gemnasium.com/symfio/symfio-contrib-nconf)
+
 ## Usage
 
 ```coffee
