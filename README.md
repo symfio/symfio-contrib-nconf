@@ -23,3 +23,7 @@ Default value is `config.json`.
 ### `nconf`
 
 Original `nconf` module.
+
+### `loadConfig`
+
+Function used to load config before all plugins.
