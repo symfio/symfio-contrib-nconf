@@ -1,11 +1,10 @@
 module.exports = (container) ->
-  container.unless "configurationFile", (applicationDirectory) ->
-    path = require "path"
-    path.join applicationDirectory, "config.json"
+  container.require require
+  container.require "path"
+  container.require "nconf"
 
-  container.set "nconf", (logger) ->
-    logger.debug "require module", name: "nconf"
-    require "nconf"
+  container.unless "configurationFile", (applicationDirectory, path) ->
+    path.join applicationDirectory, "config.json"
 
   container.set "loadConfig", (container, nconf, configurationFile, logger) ->
     ->

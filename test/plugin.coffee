@@ -1,11 +1,11 @@
 suite = require "symfio-suite"
-path = require "path"
 
 
 describe "contrib-nconf()", ->
   it = suite.plugin (container) ->
     container.inject ["suite/container"], require ".."
 
+    container.require "path"
     container.set "applicationDirectory", "/"
     container.set "configurationFile", "/config.json"
 
@@ -21,6 +21,14 @@ describe "contrib-nconf()", ->
         file: store: fromFile: "file"
 
       nconf
+
+  describe "container.require path", ->
+    it "should require path", (required) ->
+      required("path").should.equal "path"
+
+  describe "container.require nconf", ->
+    it "should require nconf", (required) ->
+      required("nconf").should.equal "nconf"
 
   describe "container.unless configurationFile", ->
     it "should define", (unlessed) ->
