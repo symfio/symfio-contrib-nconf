@@ -2,7 +2,10 @@
 
 > Read configuration from config.json and save it into container.
 
-[![Build Status](https://travis-ci.org/symfio/symfio-contrib-nconf.png?branch=master)](https://travis-ci.org/symfio/symfio-contrib-nconf) [![Dependency Status](https://gemnasium.com/symfio/symfio-contrib-nconf.png)](https://gemnasium.com/symfio/symfio-contrib-nconf)
+[![Build Status](https://travis-ci.org/symfio/symfio-contrib-nconf.png?branch=master)](https://travis-ci.org/symfio/symfio-contrib-nconf)
+[![Coverage Status](https://coveralls.io/repos/symfio/symfio-contrib-nconf/badge.png?branch=master)](https://coveralls.io/r/symfio/symfio-contrib-nconf?branch=master)
+[![Dependency Status](https://gemnasium.com/symfio/symfio-contrib-nconf.png)](https://gemnasium.com/symfio/symfio-contrib-nconf)
+[![NPM version](https://badge.fury.io/js/symfio-contrib-nconf.png)](http://badge.fury.io/js/symfio-contrib-nconf)
 
 ## Usage
 
